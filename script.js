@@ -10,7 +10,7 @@ function update () {
         <span class="from">`+i.from+`</span>
         <span class="message">`+i.message+`</span>
         <span class="red"></span>
-        <div class="time">`+i.time+`</div`;
+        <div class="time">`+i.time+`</div></div>`;
     });
     var notificationElement= document.createElement('section');
     notificationElement.innerHTML=notificationString;
