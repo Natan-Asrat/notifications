@@ -2,8 +2,7 @@ var main=document.querySelector("#notifications");
 
 var count=0;
 
-
-function update () {
+function initiate(){
     var notificationString="";
     notificationList.map( i => {
         notificationString+=`<div key="`+ i.key + `" class="notification">
@@ -11,26 +10,51 @@ function update () {
         <span class="message">`+i.message+`</span>
         <span class="red"></span>
         <div class="time">`+i.time+`</div></div>`;
+
     });
     var notificationElement= document.createElement('section');
     notificationElement.innerHTML=notificationString;
     console.log(notificationString);
     console.log(notificationElement);
     main.prepend(notificationElement);
-    unread();
+    update();
+}
+
+function update () {
+    var allNots=document.querySelectorAll(".notification");
+    unread(allNots);
+    read(allNots);
     var notCount=document.querySelector("#not-count");
     notCount.innerHTML=count;
     console.log("count: " + count);
 }
-function unread(){
-    var allNots=document.querySelectorAll(".notification");
+
+function unread(allNots){
     [...allNots].forEach( n => {
         if(!n.classList.contains("read")){
             n.classList.add("unread");
         }
     });
     count=document.querySelectorAll(".unread").length;
+
 }
+
+function read(allNots){
+    [...allNots].forEach( n => {
+            n.addEventListener('click', () => {
+                if(!n.classList.contains("read")){
+                    n.classList.add("read");
+                n.classList.remove("unread");
+                console.log("success");
+                update();
+                }
+                
+        })
+        
+    });
+    
+}
+
 /*
 <div key="key" class="notification">
     <span> from </span>
@@ -41,7 +65,7 @@ function unread(){
     </div>
 </div>
 */
-document.querySelector("body").onload=update;
+document.querySelector("body").onload=initiate;
 
 let notificationList=[
     {
