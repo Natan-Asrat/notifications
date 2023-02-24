@@ -1,5 +1,8 @@
 var main=document.querySelector("#notifications");
 
+var count=0;
+
+
 function update () {
     var notificationString="";
     notificationList.map( i => {
@@ -14,6 +17,19 @@ function update () {
     console.log(notificationString);
     console.log(notificationElement);
     main.prepend(notificationElement);
+    unread();
+    var notCount=document.querySelector("#not-count");
+    notCount.innerHTML=count;
+    console.log("count: " + count);
+}
+function unread(){
+    var allNots=document.querySelectorAll(".notification");
+    [...allNots].forEach( n => {
+        if(!n.classList.contains("read")){
+            n.classList.add("unread");
+        }
+    });
+    count=document.querySelectorAll(".unread").length;
 }
 /*
 <div key="key" class="notification">
