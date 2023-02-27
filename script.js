@@ -1,20 +1,23 @@
 var main=document.querySelector("#notifications");
 
 var count=0;
-
+var waits=1000;
+var index=0;
+var addNots = async () => {
+    setTimeout( async ()=>{
+        if(index>notificationList.length){
+            return;
+        }
+        addNotification(index);
+        index++;
+        waits*=2;
+        console.log(waits);
+        console.log(index);
+        addNots();
+    }, waits);
+}
 function initiate(){
     var notificationString="";
-    notificationList.map( i => {
-        notificationString+=`<div key="`+ i.key + `" class="notification">
-        <img src="` + i.image + `" >
-        <div>
-        <span class="from">`+i.from+`</span>
-        <span class="message">`+i.message+`</span>
-        <span class="red"></span>
-        <div class="time">`+i.time+`</div>
-        </div></div>`;
-
-    });
     var notificationElement= document.createElement('section');
     notificationElement.innerHTML=notificationString;
     console.log(notificationString);
@@ -24,6 +27,7 @@ function initiate(){
 }
 
 function update () {
+    addNots();
     var allNots=document.querySelectorAll(".notification");
     document.querySelector("#mark-all").addEventListener("click", markAllAsRead);
     unread(allNots);
@@ -85,6 +89,20 @@ function markAllAsRead(){
     });
 }
 
+function addNotification(index){
+    i=notificationList[index];
+    const notificationString =`<div key="`+ i.key + `" class="notification">
+    <img src="` + i.image + `" >
+    <div>
+    <span class="from">`+i.from+`</span>
+    <span class="message">`+i.message+`</span>
+    <span class="red"></span>
+    <div class="time">`+i.time+`</div>
+    </div></div>`;
+    let notificationElement = document.createElement('section');
+    notificationElement.innerHTML=notificationString;
+    main.prepend(notificationElement);
+}
 /*
 <div key="key" class="notification">
     <span> from </span>
