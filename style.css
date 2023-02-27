@@ -1,0 +1,44 @@
+*{
+    box-sizing: border-box;
+}
+html, body{
+    width: 90vw;
+    padding: 0;
+    margin: 10px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav section{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    
+}
+#not-count{
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    background-color: hsl(219, 85%, 26%);   
+    box-sizing: content-box; 
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+#mark-all, .message{
+    color: hsl(219, 12%, 42%);
+}
+.from{
+    font-weight: 600;
+
+}
+.time{
+    color: hsl(219, 14%, 63%);
+}
+#notifications{
+    padding: 10px;
+}
