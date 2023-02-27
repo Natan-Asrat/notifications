@@ -47,11 +47,14 @@ function read(allNots){
             n.addEventListener('click', () => {
                 if(!n.classList.contains("read")){
                     n.classList.add("read");
+                }
+                if(!(n.querySelector(".red").classList.contains(".hide"))){
+                    n.querySelector(".red").classList.add("hide");
+                }
+                n.classList.remove(".read");
                 n.classList.remove("unread");
                 console.log("success");
-                update();
-                }
-                
+                update();     
         })
         
     });
