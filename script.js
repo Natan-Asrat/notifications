@@ -25,6 +25,7 @@ function initiate(){
 
 function update () {
     var allNots=document.querySelectorAll(".notification");
+    document.querySelector("#mark-all").addEventListener("click", markAllAsRead);
     unread(allNots);
     read(allNots);
     var notCount=document.querySelector("#not-count");
@@ -59,6 +60,22 @@ function read(allNots){
         
     });
     
+}
+
+function markAllAsRead(){
+    let allNots=document.querySelectorAll(".notification");
+    [...allNots].forEach(n => {
+        if(!n.classList.contains("read")){
+            n.classList.add("read");
+        }
+        if(!(n.querySelector(".red").classList.contains(".hide"))){
+            n.querySelector(".red").classList.add("hide");
+        }
+        n.classList.remove(".read");
+        n.classList.remove("unread");
+        console.log("success");
+        update();
+    });
 }
 
 /*
@@ -124,3 +141,4 @@ let notificationList=[
         image: './assets/images/avatar-anna-kim.webp'
     }
 ];
+

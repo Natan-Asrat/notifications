@@ -30,6 +30,7 @@ nav section{
     color: white;
 }
 #mark-all, .message{
+    cursor: pointer;
     color: hsl(219, 12%, 42%);
 }
 .from{
