@@ -42,3 +42,12 @@ nav section{
 #notifications{
     padding: 10px;
 }
+#notifications img{
+    width: 2rem;
+    margin-right: 1rem;
+}
+.notification{
+    display: grid;
+    grid-template-columns: 3rem auto;
+    margin: 10px 0;
+}

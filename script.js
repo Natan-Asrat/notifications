@@ -6,10 +6,13 @@ function initiate(){
     var notificationString="";
     notificationList.map( i => {
         notificationString+=`<div key="`+ i.key + `" class="notification">
-        <img src="` + i.image + `" ><span class="from">`+i.from+`</span>
+        <img src="` + i.image + `" >
+        <div>
+        <span class="from">`+i.from+`</span>
         <span class="message">`+i.message+`</span>
         <span class="red"></span>
-        <div class="time">`+i.time+`</div></div>`;
+        <div class="time">`+i.time+`</div>
+        </div></div>`;
 
     });
     var notificationElement= document.createElement('section');
@@ -94,7 +97,7 @@ let notificationList=[
         message: 'sent you a private message',
         time: '5 days ago',
         key: '4',
-        image: './assets/images/avatar-rizky-hasanudding.webp'
+        image: './assets/images/avatar-rizky-hasanuddin.webp'
     },
     {
         from: 'Kimberly Smith',
