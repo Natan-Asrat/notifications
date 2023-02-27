@@ -30,6 +30,11 @@ function update () {
     read(allNots);
     var notCount=document.querySelector("#not-count");
     notCount.innerHTML=count;
+    if(notCount==0){
+        document.querySelector('#mark-all').style.display='none';
+    }else if(notCount>0){
+        document.querySelector('#mark-all').style.display='inline-block';
+    }
     console.log("count: " + count);
 }
 
@@ -40,7 +45,7 @@ function unread(allNots){
         }
     });
     count=document.querySelectorAll(".unread").length;
-
+    
 }
 
 function read(allNots){
@@ -74,6 +79,8 @@ function markAllAsRead(){
         n.classList.remove(".read");
         n.classList.remove("unread");
         console.log("success");
+        document.querySelector("#mark-all").style.display='none';
+
         update();
     });
 }
